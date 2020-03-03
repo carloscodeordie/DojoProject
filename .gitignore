@@ -1,2 +1,4 @@
 *.meta
+.vs/*
+Library/*
 Assets/BeatEmUpTemplate1.30.unitypackage

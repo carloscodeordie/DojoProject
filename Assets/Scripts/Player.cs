@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,110 +7,198 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour 
 {
-	//public EasyJoystick joystick;
+    /**
+     * Player controls
+     * */
+    [SerializeField] public float maxSpeed = 4;
+    [SerializeField] public float jumpForce = 400;
+    [SerializeField] public float minHeight, maxHeight;
+    [SerializeField] public int maxHealth = 10;
+    [SerializeField] public string playerName;
+    [SerializeField] public Sprite playerImage;
+    [SerializeField] public AudioClip collisionSound,jumpSound,healthItem,deadSound;
+    [SerializeField] public Weapon weapon;
+    [SerializeField] public int damageCount;
+    [SerializeField] public bool onGround;
+    [SerializeField] public bool isDead = false;
+    [SerializeField] public bool facingRight = true;
+    [SerializeField] public bool holdingWeapon = false;
+    [SerializeField] public bool highDamage;
+    [SerializeField] public bool canAttack = true;
+    [SerializeField] public bool canDamage = true;
+    // The variable determines the minimum ticket between weapon attacks
+    [SerializeField] public float minimumWeaponAttackTime = 0.3f;
+    [SerializeField] public Vector3 highDamageForce = new Vector3(1.5f, 2.5f, 0);
+    [SerializeField] public int enemyMaximumCombo = 3;
 
-	public float maxSpeed = 4;
-	public float jumpForce = 400;
-	public float minHeight, maxHeight;
-	public int maxHealth = 10;
-	public string playerName;
-	public Sprite playerImage;
-	public AudioClip collisionSound,jumpSound,healthItem,deadSound;
-	public Weapon weapon;
-	public int damageCount;
-
-	private int currentHealth;
+    /**
+     * State variables
+     * */
+    private int currentHealth;
 	private float currentSpeed;
 	private Rigidbody rb;
 	private Animator anim;
 	private Transform groundCheck;
-	public bool onGround;
-	public bool isDead = false;
-	public bool facingRight = true;
 	private bool jump = false; 
 	private AudioSource audioS;
-	public bool holdingWeapon = false;
+    // This variable hold the last time in which the player hits with his weapon
 	private float weaponAttackTime;
-	public bool highDamage;
-	public bool canAttack = true;
+    private float h;
+    private float z;
+    private Ray ray;
+    private RaycastHit hit;
+    private float rayDis;
 
-
-	void Start () 
+    /**
+     * Initialization method
+     * */
+    void Start () 
 	{
-		rb = GetComponent<Rigidbody> ();
-		anim = GetComponent<Animator> ();
-		groundCheck = gameObject.transform.Find ("GroundCheck");
+        // Get Player components
+        rb = GetComponent<Rigidbody>();
+		anim = GetComponent<Animator>();
+        audioS = GetComponent<AudioSource>();
+        groundCheck = gameObject.transform.Find("GroundCheck");
+
+        // Initialize speed and health when player spawns
 		currentSpeed = maxSpeed;
 		currentHealth = maxHealth;
-		audioS = GetComponent<AudioSource>();
 	}
 
+    // Runs on time per frame and it is better to player low reactions as jump, attack or hold an enemy
 	void Update () 
 	{
-		HoldEnemy ();
-
-		onGround = Physics.Linecast (transform.position,groundCheck.position,1<< LayerMask.NameToLayer("Ground"));
-
-		anim.SetBool ("OnGround", onGround);
-		anim.SetBool ("Dead", isDead);
-		anim.SetBool ("Weapon",holdingWeapon);
-		anim.SetBool("HighDamage",highDamage);
-
-		if (Input.GetButtonDown("Jump")/*CrossPlatformInputManager.GetButtonDown("Jump")*/)//地面攻击不能跳
-		{
-			Jump ();
-		}
-
-		if (!holdingWeapon) 
-		{
-			if (Input.GetKeyDown (KeyCode.J)  /*CrossPlatformInputManager.GetButtonDown ("Attack")*/ &&canAttack) 
-			{
-				Attack ();
-			}
-		}
-		else if (holdingWeapon) 
-		{
-			if (Input.GetKey (KeyCode.J) /*CrossPlatformInputManager.GetButton("Attack")*/) 
-			{
-				if(weaponAttackTime>0.3f)
-				{
-					weaponAttackTime = 0;
-					Attack ();
-				}
-				else
-				{
-					weaponAttackTime += Time.deltaTime;
-				}
-			}
-		}
+        SetStates();
+        ValidatesGround();
+        HoldEnemy();
+        DoJump();
+        DoAttack();
 	}
 
-	float h;
-	float z;
-	private void FixedUpdate()
+    // Jump the player
+    private void DoJump()
+    {
+        // Verify if Jump button was pressed
+        if (Input.GetButtonDown("Jump"))
+        {
+            // Verify if the player is able to jump and is not in the air or holding a weapon
+            if (onGround &&
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1") &&
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1 0") &&
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack2") &&
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack3") &&
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1") &&
+                !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2") &&
+                holdingWeapon == false)
+            {
+                // Activate Jump animation
+                jump = true;
+            }
+        }
+    }
+
+    // Hold the enemy near from the player
+    private void HoldEnemy()
+    {
+        // Increase ray distance to detect the near enemies
+        rayDis = GetComponent<CapsuleCollider>().radius + 1f;
+        // Generate the origin of the ray, a little bit up from the player center
+        ray.origin = transform.position + transform.up * 1f;
+
+        // Generate Ray direction depending where the player is facing
+        if (facingRight)
+        {
+            ray.direction = transform.right;
+        }
+        else if (!facingRight)
+        {
+            ray.direction = -transform.right;
+        }
+
+        // When user is walking, throw a ray and verify if it impacted with Enemy layer
+        if (Physics.Raycast(ray, out hit, rayDis, 1 << LayerMask.NameToLayer("Enemy")) && 
+            onGround &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("Damage") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("Voadera") &&
+            !holdingWeapon
+            )
+        {
+            // Get the enemy where the ray impacted
+            Enemy holdEnemy = hit.collider.gameObject.GetComponent<Enemy>();
+            // Only normal enemies can be grabbed, you cannot hold a boss
+            if (holdEnemy.tag != "Boss")
+            {
+                // Enemy null validation
+                if (holdEnemy != null)
+                {
+                    // Set hold for enemy
+                    holdEnemy.beHold = true;
+                    // Activates player's hold animation
+                    anim.SetBool("HoldEnemy", true);
+                }
+            }
+        }
+        else
+        {
+            // Disables player's hold animation if no enemy is near from player
+            anim.SetBool("HoldEnemy", false);
+        }
+    }
+
+    // Verify if the player is on the ground
+    private void ValidatesGround()
+    {
+        // Throws a line from player position to ground check empty component and verify if there is a layer between
+        onGround = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        // Set onGround animation
+        anim.SetBool("OnGround", onGround);
+    }
+
+    // Set the dead, weapon and high damage animations if they are true
+    private void SetStates()
+    {
+        anim.SetBool("Dead", isDead);
+        anim.SetBool("Weapon", holdingWeapon);
+        anim.SetBool("HighDamage", highDamage);
+    }
+
+    // Do an attack with or without weapons
+    private void DoAttack()
+    {
+        // Validates if the user pressed the attack key
+        if (Input.GetKeyDown(KeyCode.J) && canAttack)
+        {
+            // Do normal attack if the player is not holding a weapon
+            if (!holdingWeapon)
+            {
+                Attack();
+            }
+            else if (holdingWeapon)
+            {
+                // Validates if the user is able to use the weapon again
+                if (weaponAttackTime > minimumWeaponAttackTime)
+                {
+                    // Attack with weapon and reset the status weapon time variable
+                    weaponAttackTime = 0;
+                    Attack();
+                }
+                else
+                {
+                    // Increase weapon attack time
+                    weaponAttackTime += Time.deltaTime;
+                }
+            }
+        }
+    }
+
+    // Runs one or more times per frame
+    private void FixedUpdate()
 	{
-		if(damageCount >= 3)
-		{
-			StartCoroutine(ControlHighDamageBool());
-			damageCount = 0;
-		}
-		if (highDamage) 
-		{
-			if(!isDead)
-			{
-				if(facingRight)
-				{
-					rb.AddForce (new Vector3(-1.5f,2.5f,0),ForceMode.Impulse);
-				}
-				else
-				{
-					rb.AddForce (new Vector3(1.5f,2.5f,0),ForceMode.Impulse);
-				}
-			}
-		}
-
-
-		
+        ReceiveCombo();
+        ReceiveHighDamage();
 		if (!isDead) 
 		{
 			if(!highDamage&&onGround&&
@@ -161,15 +250,55 @@ public class Player : MonoBehaviour
 		}
 	}
 
+    // Validate if the player receive a combo
+    private void ReceiveCombo()
+    {
+        // Validate if the player receives a combo from the enemy 
+        if (damageCount >= enemyMaximumCombo)
+        {
+            // The player receives a High Damage Hit after the enemy combo
+            StartCoroutine(ControlHighDamageBool());
+            // Reset combo count
+            damageCount = 0;
+        }
+    }
 
+    // Receive high damage from enemies
+    private void ReceiveHighDamage()
+    {
+        // Validates if the player receive a big damage
+        if (highDamage && !isDead)
+        {
+            if (facingRight)
+            {
+                Vector3 inverseHighDamageForce = highDamageForce;
+                // Invert the high damage force
+                inverseHighDamageForce.x = -inverseHighDamageForce.x;
+                // Throws the user to the right
+                rb.AddForce(inverseHighDamageForce, ForceMode.Impulse);
+            }
+            else
+            {
+                // Throws the user to the left
+                rb.AddForce(highDamageForce, ForceMode.Impulse);
+            }
+        }
+    }
+
+    // Controls what the player does after receive a combo
 	public IEnumerator ControlHighDamageBool()
 	{
+        // Reset combo count to zero
 		damageCount = 0;
+        // Set the High Damage Status in order to launch the player far away
 		highDamage = true;
-		SetHoldingWeaponToFalse();
+        // Remove weapon from the player
+        SetHoldingWeapon(false);
+
 		FindObjectOfType<Weapon>().gameObject.GetComponent<SpriteRenderer>().sprite = null;
 		yield return new WaitForSeconds(0.05f);
-		highDamage = false;
+        // Reset the High Damage Status in order to stop the player from be launched again
+        highDamage = false;
 	}
 
 
@@ -237,7 +366,7 @@ public class Player : MonoBehaviour
 		yield return null;
 	}
 		
-	public bool canDamage = true;
+	
 	public void TookDamage(int damage)
 	{
 		if(!isDead && canDamage)
@@ -308,70 +437,10 @@ public class Player : MonoBehaviour
 		anim.SetTrigger ("Attack");
 	}
 
-	void Jump()
-	{
-		if(onGround &&
-		   !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1")&&
-		   !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1 0")&&
-		   !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack2")&&
-		   !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack3")&&
-		   !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1")&&
-		   !anim.GetCurrentAnimatorStateInfo(0).IsName ("HighDamage2")&&
-		   holdingWeapon == false)
-		{
-			jump = true;
-		}
-	}
-	
 	void PlayAttackSound()
 	{
 		audioS.clip = jumpSound;
 		audioS.Play ();
-	}
-
-	Ray ray;
-	RaycastHit hit;
-
-	float rayDis; 
-
-	void HoldEnemy()
-	{
-		rayDis = GetComponent<CapsuleCollider> ().radius +1f;
-		ray.origin = transform.position + transform.up * 1f;
-
-		if (facingRight)
-		{
-			ray.direction = transform.right;
-		} 
-		else if(!facingRight)
-		{
-			ray.direction = -transform.right;
-		}
-
-
-		if (Physics.Raycast (ray, out hit, rayDis, 1 << LayerMask.NameToLayer ("Enemy"))&&onGround && 
-		    !anim.GetCurrentAnimatorStateInfo(0).IsName("Damage")&&
-		    !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1")&&
-		    !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2")&&
-		    !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump")&&
-		    !anim.GetCurrentAnimatorStateInfo(0).IsName("Voadera")&&
-			!holdingWeapon
-		    ) 
-		{
-			Debug.DrawRay(transform.position+ transform.up * 1f,ray.direction*rayDis,Color.blue);
-			Enemy holdEnemy = hit.collider.gameObject.GetComponent<Enemy> ();
-			if(holdEnemy.tag != "Boss")
-			{
-				if (holdEnemy != null) {
-					holdEnemy.beHold = true;
-					anim.SetBool ("HoldEnemy",true);
-				}
-			}
-		} 
-		else 
-		{
-			anim.SetBool("HoldEnemy",false);
-		}
 	}
 
 	void LoadScene()
@@ -379,7 +448,12 @@ public class Player : MonoBehaviour
 		SceneManager.LoadScene (0);
 	}
 
-	public void SetHoldingWeaponToFalse()
+    public void SetHoldingWeapon(bool flag)
+    {
+        holdingWeapon = flag;
+    }
+
+    public void SetHoldingWeaponToFalse()
 	{
 		holdingWeapon = false;
 	}	
