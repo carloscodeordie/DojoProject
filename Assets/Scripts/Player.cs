@@ -5,18 +5,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour 
+public class Player : MonoBehaviour
 {
     /**
      * Player controls
-     * */
+     **/
     [SerializeField] public float maxSpeed = 4;
     [SerializeField] public float jumpForce = 400;
     [SerializeField] public float minHeight, maxHeight;
     [SerializeField] public int maxHealth = 10;
     [SerializeField] public string playerName;
     [SerializeField] public Sprite playerImage;
-    [SerializeField] public AudioClip collisionSound,jumpSound,healthItem,deadSound;
+    [SerializeField] public AudioClip collisionSound, jumpSound, healthItem, deadSound;
     [SerializeField] public Weapon weapon;
     [SerializeField] public int damageCount;
     [SerializeField] public bool onGround;
@@ -35,14 +35,14 @@ public class Player : MonoBehaviour
      * State variables
      * */
     private int currentHealth;
-	private float currentSpeed;
-	private Rigidbody rb;
-	private Animator anim;
-	private Transform groundCheck;
-	private bool jump = false; 
-	private AudioSource audioS;
+    private float currentSpeed;
+    private Rigidbody rb;
+    private Animator anim;
+    private Transform groundCheck;
+    private bool jump = false;
+    private AudioSource audioS;
     // This variable hold the last time in which the player hits with his weapon
-	private float weaponAttackTime;
+    private float weaponAttackTime;
     private float h;
     private float z;
     private Ray ray;
@@ -52,28 +52,28 @@ public class Player : MonoBehaviour
     /**
      * Initialization method
      * */
-    void Start () 
-	{
+    void Start()
+    {
         // Get Player components
         rb = GetComponent<Rigidbody>();
-		anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         audioS = GetComponent<AudioSource>();
         groundCheck = gameObject.transform.Find("GroundCheck");
 
         // Initialize speed and health when player spawns
-		currentSpeed = maxSpeed;
-		currentHealth = maxHealth;
-	}
+        currentSpeed = maxSpeed;
+        currentHealth = maxHealth;
+    }
 
     // Runs on time per frame and it is better to player low reactions as jump, attack or hold an enemy
-	void Update () 
-	{
+    void Update()
+    {
         SetStates();
         ValidatesGround();
         HoldEnemy();
         DoJump();
         DoAttack();
-	}
+    }
 
     // Jump the player
     private void DoJump()
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
         }
 
         // When user is walking, throw a ray and verify if it impacted with Enemy layer
-        if (Physics.Raycast(ray, out hit, rayDis, 1 << LayerMask.NameToLayer("Enemy")) && 
+        if (Physics.Raycast(ray, out hit, rayDis, 1 << LayerMask.NameToLayer("Enemy")) &&
             onGround &&
             !anim.GetCurrentAnimatorStateInfo(0).IsName("Damage") &&
             !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1") &&
@@ -196,59 +196,115 @@ public class Player : MonoBehaviour
 
     // Runs one or more times per frame
     private void FixedUpdate()
-	{
+    {
         ReceiveCombo();
         ReceiveHighDamage();
-		if (!isDead) 
-		{
-			if(!highDamage&&onGround&&
-			   !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2")&&!anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1")&&
-				!anim.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
-			{
-				h = Input.GetAxis ("Horizontal");
-				z = Input.GetAxis ("Vertical");
-			}
+        ReadPlayerControls();
+        MovePlayer();
+        FlipPlayer();
+        FreezeJump();
+        FreezeWhenDamage2();
+        CalculateAnimationSpeed();
+        MovePlayerWithRespectCamera();
+        Jump();
+    }
 
-			if(anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2"))
-			{
-				rb.velocity = Vector3.zero;
-			}
+    // Functions that read horizonral and vertical control movement
+    private void ReadPlayerControls()
+    {
+        // Read the player movement if is on ground and is not dead or receiving damage
+        if (!isDead &&
+            !highDamage &&
+            onGround &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2") &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
+        {
+            // Read horizonal control
+            h = Input.GetAxis("Horizontal");
+            // Read depth/vertical control
+            z = Input.GetAxis("Vertical");
+        }
+    }
 
-			if(!onGround)
-			{
-				z=0;
-			}
-			if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Damage")&&!highDamage&&onGround)
-			{
-				rb.velocity = new Vector3(h*currentSpeed, rb.velocity.y, z*currentSpeed);
-			}
+    // Function that moves player in horizontal and vertical plane
+    private void MovePlayer()
+    {
+        // Move if the player is on ground, and not on damage
+        if (!isDead &&
+            !highDamage &&
+            onGround &&
+            !anim.GetCurrentAnimatorStateInfo(0).IsName("Damage"))
+        {
+            // Move player
+            rb.velocity = new Vector3(h * currentSpeed, rb.velocity.y, z * currentSpeed);
+        }
+    }
 
-			if(onGround)
-			{
-				anim.SetFloat ("Speed",Mathf.Abs (rb.velocity.magnitude));
-			}
+    // Functions that freeze the depth movement when player is jumping
+    private void FreezeJump()
+    {
+        // Validate that player is not dead and is not on the ground
+        if (!isDead && !onGround)
+        {
+            // Freeze depth/vertical movement
+            z = 0;
+        }
+    }
 
-			if(h>0&&!facingRight&&!highDamage&&!anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2")&&!anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1"))
-			{
-				Flip();
-			}
-			else if(h<0&&facingRight&&!highDamage&&!anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2")&&!anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1"))
-			{
-				Flip ();
-			}
+    // Functions that freeze the player movement when the player is receing a HighDamage2
+    private void FreezeWhenDamage2()
+    {
+        // Validate if player is not dead or is not on high damage 2
+        if (!isDead && anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2"))
+        {
+            // Freeze player horizontal and vertical velocity
+            rb.velocity = Vector3.zero;
+        }
+    }
 
-			if(jump)
-			{
-				jump = false;
-				rb.AddForce (Vector3.up * jumpForce);
-			}
-			float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0,0,10)).x;
-			float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,10)).x;
-			rb.position = new Vector3(Mathf.Clamp(rb.position.x,minWidth+1,maxWidth-1),
-				                       rb.position.y,
-				                       Mathf.Clamp(rb.position.z,minHeight,maxHeight));
-		}
-	}
+    // Functions that impulse the player to make a jump
+    private void Jump()
+    {
+        // Validate that player is not dead and the player pressed jump button
+        if (!isDead && jump)
+        {
+            // Unable to infite jump 
+            jump = false;
+            // Add a player force to jump 
+            rb.AddForce(Vector3.up * jumpForce);
+        }
+    }
+
+    private void CalculateAnimationSpeed()
+    {
+        if (!isDead && onGround)
+        {
+            anim.SetFloat("Speed", Mathf.Abs(rb.velocity.magnitude));
+        }
+    }
+
+    private void FlipPlayer()
+    {
+        if (!isDead && h > 0 && !facingRight && !highDamage && !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1"))
+        {
+            Flip();
+        }
+        else if (!isDead && h < 0 && facingRight && !highDamage && !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1"))
+        {
+            Flip();
+        }
+    }
+
+    private void MovePlayerWithRespectCamera()
+    {
+        if (!isDead)
+        {
+            float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)).x;
+            float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 10)).x;
+            rb.position = new Vector3(Mathf.Clamp(rb.position.x, minWidth + 1, maxWidth - 1), rb.position.y, Mathf.Clamp(rb.position.z, minHeight, maxHeight));
+        }
+    }
 
     // Validate if the player receive a combo
     private void ReceiveCombo()
