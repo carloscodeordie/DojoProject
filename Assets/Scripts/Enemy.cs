@@ -4,51 +4,54 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	public float maxSpeed;
-	public float minHeight,maxHeight;
-	public float damageTime = 0.7f;
-	public int maxHealth;
-	public float attackRate = 1f;
-	public string enemyName;
-	public Sprite enemyImage;
-	public AudioClip collisionSound, deathSound;
+	[SerializeField] public float maxSpeed;
+    [SerializeField] public float minHeight,maxHeight;
+    [SerializeField] public float damageTime = 0.7f;
+    [SerializeField] public int maxHealth;
+    [SerializeField] public float attackRate = 1f;
+    [SerializeField] public string enemyName;
+    [SerializeField] public Sprite enemyImage;
+    [SerializeField] public AudioClip collisionSound, deathSound;
+    [SerializeField] public bool facingRight = false;
+    [SerializeField] public Transform newTarget;
+    [SerializeField] public int damageCount;
+    [SerializeField] public bool highDamage;
+    [SerializeField] public bool beHold = false;
 
-	private int currentHealth;
-	protected float currentSpeed;
-	protected Rigidbody rb;
-	protected Animator anim;
+    protected float currentSpeed;
+    protected Rigidbody rb;
+    protected Animator anim;
+    // The target is the player
+    protected Transform target; 
+    protected Transform targetHitBox;
+    protected bool isDead = false;
+    protected bool damaged = false;
+
+    private int currentHealth;
 	private Transform groundCheck;
 	private bool onGround;
-
-	public bool facingRight = false;
-	protected Transform target;              //player.
-	protected Transform targetHitBox;
-	public Transform newTarget;
-	protected bool isDead = false;
 	private float zForce;
 	private float walkTimer;
-	protected bool damaged = false;
 	private float damageTimer;
 	private float nextAttack;
 	private CapsuleCollider collider;
 	private AudioSource audioS;
 
-	public int damageCount;
-	public bool highDamage;
-	public bool beHold = false;
-
-	public virtual void Start () //子类中如果存在相同的函数名，基类必须为虚拟方法，在子类中override复写出来。
+	public virtual void Start ()
 	{
-		currentSpeed = maxSpeed;
-		rb = GetComponent<Rigidbody> ();
-		anim = GetComponent<Animator> ();
-		groundCheck = transform.Find("GroundCheck");
-		target = FindObjectOfType<Player> ().transform; 
-		newTarget = GameObject.Find ("newTarget").transform;
-		targetHitBox = GameObject.FindGameObjectWithTag("PlayerAttack").transform;
+
+        rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        newTarget = GameObject.Find("newTarget").transform;
+        targetHitBox = GameObject.FindGameObjectWithTag("PlayerAttack").transform;
+        groundCheck = transform.Find("GroundCheck");
+        target = FindObjectOfType<Player>().transform;
+        collider = GetComponent<CapsuleCollider>();
+        audioS = GetComponent<AudioSource>();
+
+        // Reset current speed to max
+        currentSpeed = maxSpeed;
 		currentHealth = maxHealth;
-		collider = GetComponent<CapsuleCollider> ();
-		audioS = GetComponent<AudioSource>();
 	}
 	
 

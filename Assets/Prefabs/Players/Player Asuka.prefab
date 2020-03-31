@@ -388,6 +388,9 @@ MonoBehaviour:
   highDamage: 0
   canAttack: 1
   canDamage: 0
+  minimumWeaponAttackTime: 0.3
+  highDamageForce: {x: 1.5, y: 2.5, z: 0}
+  enemyMaximumCombo: 3
 --- !u!82 &82498809653242290
 AudioSource:
   m_ObjectHideFlags: 0
@@ -587,5 +590,5 @@ MonoBehaviour:
   damage: 1
   punchForce: 0
   hitEffect: {fileID: 1067219946445776, guid: d243db5bae4a92349a5fb35a57b8f9e3, type: 3}
-  hitEffectPos: {fileID: 4753603334031510}
+  hitEffectPos: {fileID: 1400935929215406}
   anim: {fileID: 95259310028210700}

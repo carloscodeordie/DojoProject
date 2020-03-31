@@ -276,6 +276,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Function that adjust the animation velocity accordingly to player movement speed
     private void CalculateAnimationSpeed()
     {
         if (!isDead && onGround)
@@ -284,18 +285,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Function that determines if the player need to be flipped or not
     private void FlipPlayer()
     {
+        // if player is moving right and facing left and is not dead, or on high damage
         if (!isDead && h > 0 && !facingRight && !highDamage && !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1"))
         {
             Flip();
         }
+        // if player is moving left and facing right and is not dead, or on high damage
         else if (!isDead && h < 0 && facingRight && !highDamage && !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("HighDamage1"))
         {
             Flip();
         }
     }
 
+    //TODO: Analize this code in depth
     private void MovePlayerWithRespectCamera()
     {
         if (!isDead)
@@ -357,51 +362,68 @@ public class Player : MonoBehaviour
         highDamage = false;
 	}
 
-
-
+    // Function that flips the player
 	public void Flip()
 	{
+        // Validate if the player is not attacking
 		if(!anim.GetCurrentAnimatorStateInfo(0).IsTag("DefaultAttack"))
 		{
+            // Invert facing variable
 			facingRight = !facingRight;
 
-			Vector3 scale = transform.localScale;
+            // Flip the player inverting his x scale
+            Vector3 scale = transform.localScale;
 			scale.x *= -1;
 			transform.localScale = scale;
 		}
 	}
 
+    // Makes the player not to move
 	void ZeroSpeed()
 	{
 		currentSpeed = 0;
 	}
 
+    // Reset player speed
 	void ResetSpeed()
 	{
 		currentSpeed = maxSpeed;
 	}
 
+    // Determine the player current speed when using a weapon
 	void WeaponSpeed()
 	{
-		currentSpeed = 0.5f * maxSpeed;
+		currentSpeed = minimumWeaponAttackTime * maxSpeed;
 	}
 
+    // Make a respawn when the player dies
 	void PlayerRespawn()
 	{
-		if (FindObjectOfType<GameManager> ().lives > 0) 
+        // Validates if the player still have lives
+		if (FindObjectOfType<GameManager>().lives > 0) 
 		{
+            //TODO: Analize why this method is invoked
 			StartCoroutine(CanDamageBoolControl());
+            // Set dead status to false
 			isDead = false;
-			UIManager.instance.UpdateLives ();
+            // Update lives in UI
+			UIManager.instance.UpdateLives();
+            // Reset health to max
 			currentHealth = maxHealth;
-			UIManager.instance.UpdateHealth (currentHealth);
-			anim.Rebind ();
-			float minWidth = Camera.main.ScreenToWorldPoint (new Vector3 (0, 0, 10)).x;
+            // Update health in UI
+			UIManager.instance.UpdateHealth(currentHealth);
+            // Restart all the player animations
+			anim.Rebind();
+            //TODO: Analize why this is used
+            float minWidth = Camera.main.ScreenToWorldPoint (new Vector3 (0, 0, 10)).x;
+            // Change player position to come from the air
 			transform.position = new Vector3 (minWidth, 10, -4);
 		}
 		else 
 		{
+            // Displaye Game Over message
 			UIManager.instance.UpdateDisplayMessage("Game Over");
+            // Destroy game manager
 			Destroy(FindObjectOfType<GameManager>().gameObject,2f);
 			Invoke ("LoadScene",2f);
 		}

@@ -7,14 +7,14 @@ public class Attack : MonoBehaviour
 	public int damage;
 	public float punchForce;
 	public GameObject hitEffect;
-	public Transform hitEffectPos;
+	public GameObject hitEffectPos;
 
 	public Animator anim;
 
 	void Start () 
 	{
-
-	}
+        
+    }
 	
 
 	void Update () 
@@ -33,11 +33,11 @@ public class Attack : MonoBehaviour
 
 			if (this.name != "Weapon") 
 			{
-				anim.SetBool ("Combo", true);
+				// anim.SetBool ("Combo", true);
 			}
 		
 			enemy.TookDamage(damage);
-			Instantiate(hitEffect,hitEffectPos.position,Quaternion.identity);
+			Instantiate(hitEffect,hitEffectPos.transform.position,Quaternion.identity);
 		}
 
 		if (player != null) 
@@ -61,7 +61,7 @@ public class Attack : MonoBehaviour
 		{
 			anim.SetBool ("Combo", true);
 			car.TookDamage(damage);
-			Instantiate(hitEffect,hitEffectPos.position,Quaternion.identity);
+			Instantiate(hitEffect,hitEffectPos.transform.position,Quaternion.identity);
 		}
 	}	
 }
