@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: c949955d6f9324589b8646f51b6419cd
+timeCreated: 1465493536
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - ntscShader: {fileID: 4800000, guid: 6a7f5004c742a4392b8873a73f945ef8, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

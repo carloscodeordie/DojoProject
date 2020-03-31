@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: eb8de4fedc35f4d2b9d705babe6b9272
+timeCreated: 1465493852
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Noise: {fileID: 2800000, guid: 89d38d9e1c1834e838994f4cb77f912c, type: 3}
+  - tvDistortionShader: {fileID: 4800000, guid: 63ef093375cfb45e3bff8874aae4b392,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

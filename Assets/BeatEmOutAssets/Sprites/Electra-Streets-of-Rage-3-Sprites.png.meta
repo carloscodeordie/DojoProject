@@ -1,0 +1,1059 @@
+fileFormatVersion: 2
+guid: fd53a559f8ac1c34e8422c5e9a1a49a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Electra-Streets-of-Rage-3-Sprites_0
+  - first:
+      213: 21300002
+    second: Electra-Streets-of-Rage-3-Sprites_1
+  - first:
+      213: 21300004
+    second: Electra-Streets-of-Rage-3-Sprites_2
+  - first:
+      213: 21300006
+    second: Electra-Streets-of-Rage-3-Sprites_3
+  - first:
+      213: 21300008
+    second: Electra-Streets-of-Rage-3-Sprites_4
+  - first:
+      213: 21300010
+    second: Electra-Streets-of-Rage-3-Sprites_5
+  - first:
+      213: 21300012
+    second: Electra-Streets-of-Rage-3-Sprites_6
+  - first:
+      213: 21300014
+    second: Electra-Streets-of-Rage-3-Sprites_7
+  - first:
+      213: 21300016
+    second: Electra-Streets-of-Rage-3-Sprites_8
+  - first:
+      213: 21300018
+    second: Electra-Streets-of-Rage-3-Sprites_9
+  - first:
+      213: 21300020
+    second: Electra-Streets-of-Rage-3-Sprites_10
+  - first:
+      213: 21300022
+    second: Electra-Streets-of-Rage-3-Sprites_11
+  - first:
+      213: 21300024
+    second: Electra-Streets-of-Rage-3-Sprites_12
+  - first:
+      213: 21300026
+    second: Electra-Streets-of-Rage-3-Sprites_13
+  - first:
+      213: 21300028
+    second: Electra-Streets-of-Rage-3-Sprites_14
+  - first:
+      213: 21300030
+    second: Electra-Streets-of-Rage-3-Sprites_15
+  - first:
+      213: 21300032
+    second: Electra-Streets-of-Rage-3-Sprites_16
+  - first:
+      213: 21300034
+    second: Electra-Streets-of-Rage-3-Sprites_17
+  - first:
+      213: 21300036
+    second: Electra-Streets-of-Rage-3-Sprites_18
+  - first:
+      213: 21300038
+    second: Electra-Streets-of-Rage-3-Sprites_19
+  - first:
+      213: 21300040
+    second: Electra-Streets-of-Rage-3-Sprites_20
+  - first:
+      213: 21300042
+    second: Electra-Streets-of-Rage-3-Sprites_21
+  - first:
+      213: 21300044
+    second: Electra-Streets-of-Rage-3-Sprites_22
+  - first:
+      213: 21300046
+    second: Electra-Streets-of-Rage-3-Sprites_23
+  - first:
+      213: 21300048
+    second: Electra-Streets-of-Rage-3-Sprites_24
+  - first:
+      213: 21300050
+    second: Electra-Streets-of-Rage-3-Sprites_25
+  - first:
+      213: 21300052
+    second: Electra-Streets-of-Rage-3-Sprites_26
+  - first:
+      213: 21300054
+    second: Electra-Streets-of-Rage-3-Sprites_27
+  - first:
+      213: 21300056
+    second: Electra-Streets-of-Rage-3-Sprites_28
+  - first:
+      213: 21300058
+    second: Electra-Streets-of-Rage-3-Sprites_29
+  - first:
+      213: 21300060
+    second: Electra-Streets-of-Rage-3-Sprites_30
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 266
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 266
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_2
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 266
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_3
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 266
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 266
+        width: 32
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 266
+        width: 46
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_6
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 268
+        width: 51
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_7
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 266
+        width: 42
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_8
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 266
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_9
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 266
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_10
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 266
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_11
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 165
+        width: 54
+        height: 80
+      alignment: 9
+      pivot: {x: 0.34700605, y: 0.5073767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_12
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 165
+        width: 48
+        height: 80
+      alignment: 9
+      pivot: {x: 0.41394106, y: 0.5073767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_13
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 165
+        width: 44
+        height: 86
+      alignment: 9
+      pivot: {x: 0.7145889, y: 0.47941464}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_14
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 244
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_15
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 165
+        width: 104
+        height: 79
+      alignment: 9
+      pivot: {x: 0.30140173, y: 0.42530146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_16
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 165
+        width: 124
+        height: 64
+      alignment: 9
+      pivot: {x: 0.24777173, y: 0.50922084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_17
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 199
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_18
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 71
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_19
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 71
+        width: 80
+        height: 64
+      alignment: 9
+      pivot: {x: 0.6475298, y: 0.5184412}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_20
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 71
+        width: 87
+        height: 64
+      alignment: 9
+      pivot: {x: 0.6763574, y: 0.5092206}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_21
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 71
+        width: 60
+        height: 71
+      alignment: 9
+      pivot: {x: 0.5393412, y: 0.4667539}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_22
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 133
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_23
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 71
+        width: 84
+        height: 64
+      alignment: 9
+      pivot: {x: 0.33139402, y: 0.5553236}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_24
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 71
+        width: 66
+        height: 113
+      alignment: 9
+      pivot: {x: 0.44635195, y: 0.38510954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_25
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 71
+        width: 63
+        height: 80
+      alignment: 9
+      pivot: {x: 0.63113743, y: 0.55901206}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_26
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 86
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_27
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 13
+        width: 87
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_28
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 13
+        width: 80
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_29
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 10
+        width: 52
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electra-Streets-of-Rage-3-Sprites_30
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 5
+        width: 90
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: 220, y: -136}
+      - {x: 176, y: -144}
+      - {x: 176, y: -169}
+      - {x: 198, y: -172}
+      - {x: 269, y: -172}
+      - {x: 270, y: -171}
+      - {x: 270, y: -137}
+      - {x: 268, y: -136}
+    - - {x: -43, y: -123}
+      - {x: -48, y: -125}
+      - {x: -77, y: -154}
+      - {x: -77, y: -167}
+      - {x: -23, y: -167}
+      - {x: -21, y: -163}
+      - {x: -21, y: -123}
+    - - {x: -266, y: -140}
+      - {x: -270, y: -148}
+      - {x: -270, y: -161}
+      - {x: -266, y: -164}
+      - {x: -179, y: -164}
+      - {x: -179, y: -152}
+      - {x: -195, y: -140}
+    - - {x: -140, y: -126}
+      - {x: -174, y: -126}
+      - {x: -175, y: -133}
+      - {x: -175, y: -159}
+      - {x: -166, y: -164}
+      - {x: -92, y: -164}
+      - {x: -91, y: -163}
+      - {x: -91, y: -151}
+      - {x: -109, y: -138}
+    - - {x: -265, y: -38}
+      - {x: -268, y: -39}
+      - {x: -273, y: -74}
+      - {x: -273, y: -106}
+      - {x: -213, y: -106}
+      - {x: -213, y: -40}
+      - {x: -214, y: -38}
+    - - {x: -181, y: -38}
+      - {x: -207, y: -80}
+      - {x: -207, y: -106}
+      - {x: -123, y: -106}
+      - {x: -123, y: -40}
+      - {x: -131, y: -38}
+    - - {x: -107, y: -38}
+      - {x: -118, y: -43}
+      - {x: -118, y: -84}
+      - {x: -104, y: -106}
+      - {x: -27, y: -106}
+      - {x: -27, y: -40}
+      - {x: -33, y: -38}
+    - - {x: 2, y: -42}
+      - {x: 1, y: -53}
+      - {x: -8, y: -57}
+      - {x: 5, y: -33}
+      - {x: 3, y: -32}
+      - {x: -6, y: -32}
+      - {x: -17, y: -38}
+      - {x: -17, y: -106}
+      - {x: 29, y: -106}
+      - {x: 47, y: -105}
+      - {x: 47, y: -44}
+      - {x: 38, y: -39}
+      - {x: 5, y: -37}
+    - - {x: 103, y: -38}
+      - {x: 53, y: -38}
+      - {x: 53, y: -106}
+      - {x: 128, y: -106}
+      - {x: 139, y: -101}
+      - {x: 141, y: -97}
+      - {x: 141, y: -57}
+    - - {x: 180, y: 3}
+      - {x: 140, y: -34}
+      - {x: 140, y: -72}
+      - {x: 154, y: -106}
+      - {x: 188, y: -106}
+      - {x: 220, y: -104}
+      - {x: 220, y: 3}
+    - - {x: 256, y: -22}
+      - {x: 231, y: -22}
+      - {x: 221, y: -28}
+      - {x: 207, y: -71}
+      - {x: 207, y: -76}
+      - {x: 209, y: -79}
+      - {x: 223, y: -72}
+      - {x: 227, y: -52}
+      - {x: 226, y: -61}
+      - {x: 232, y: -106}
+      - {x: 274, y: -106}
+      - {x: 274, y: -87}
+      - {x: 258, y: -28}
+    - - {x: -216, y: 62}
+      - {x: -232, y: 72}
+      - {x: -269, y: 72}
+      - {x: -269, y: -12}
+      - {x: -227, y: -12}
+      - {x: -217, y: -10}
+      - {x: -211, y: 34}
+      - {x: -211, y: 55}
+      - {x: -213, y: 58}
+    - - {x: -201, y: 72}
+      - {x: -201, y: -12}
+      - {x: -155, y: -12}
+      - {x: -153, y: -9}
+      - {x: -149, y: 8}
+      - {x: -149, y: 72}
+    - - {x: -138, y: 56}
+      - {x: -138, y: 19}
+      - {x: -126, y: -12}
+      - {x: -92, y: -12}
+      - {x: -90, y: -11}
+      - {x: -90, y: 78}
+      - {x: -109, y: 78}
+    - - {x: 26, y: 88}
+      - {x: 18, y: 88}
+      - {x: 7, y: 85}
+      - {x: 11, y: 71}
+      - {x: -63, y: 66}
+      - {x: -74, y: 23}
+      - {x: -74, y: -12}
+      - {x: 6, y: -12}
+      - {x: 34, y: 40}
+      - {x: 34, y: 65}
+      - {x: 33, y: 80}
+    - - {x: 47, y: 56}
+      - {x: 40, y: 54}
+      - {x: 36, y: 28}
+      - {x: 36, y: -12}
+      - {x: 159, y: -12}
+      - {x: 188, y: 23}
+      - {x: 188, y: 56}
+    - - {x: -233, y: 89}
+      - {x: -230, y: 90}
+      - {x: -230, y: 141}
+      - {x: -236, y: 172}
+      - {x: -272, y: 172}
+      - {x: -272, y: 89}
+    - - {x: -227, y: 172}
+      - {x: -227, y: 89}
+      - {x: -194, y: 89}
+      - {x: -185, y: 90}
+      - {x: -185, y: 137}
+      - {x: -192, y: 172}
+    - - {x: -142, y: 128}
+      - {x: -157, y: 172}
+      - {x: -182, y: 172}
+      - {x: -184, y: 162}
+      - {x: -184, y: 89}
+      - {x: -143, y: 89}
+      - {x: -142, y: 92}
+      - {x: -143, y: 95}
+      - {x: -142, y: 100}
+    - - {x: -123, y: 172}
+      - {x: -134, y: 154}
+      - {x: -134, y: 89}
+      - {x: -92, y: 89}
+      - {x: -92, y: 139}
+      - {x: -104, y: 172}
+    - - {x: -43, y: 175}
+      - {x: -74, y: 175}
+      - {x: -74, y: 103}
+      - {x: -72, y: 91}
+      - {x: -69, y: 89}
+      - {x: -50, y: 89}
+      - {x: -38, y: 139}
+      - {x: -38, y: 172}
+      - {x: -39, y: 174}
+    - - {x: -37, y: 165}
+      - {x: -37, y: 109}
+      - {x: -30, y: 89}
+      - {x: 13, y: 89}
+      - {x: 13, y: 153}
+      - {x: -12, y: 165}
+    - - {x: 121, y: 165}
+      - {x: 96, y: 165}
+      - {x: 85, y: 158}
+      - {x: 76, y: 153}
+      - {x: 76, y: 89}
+      - {x: 107, y: 89}
+      - {x: 112, y: 92}
+      - {x: 122, y: 148}
+      - {x: 122, y: 164}
+    - - {x: 173, y: 172}
+      - {x: 159, y: 172}
+      - {x: 150, y: 161}
+      - {x: 150, y: 89}
+      - {x: 192, y: 89}
+      - {x: 192, y: 136}
+      - {x: 175, y: 171}
+    - - {x: 212, y: 172}
+      - {x: 198, y: 172}
+      - {x: 189, y: 161}
+      - {x: 189, y: 89}
+      - {x: 231, y: 89}
+      - {x: 231, y: 136}
+      - {x: 214, y: 171}
+    - - {x: 240, y: 172}
+      - {x: 229, y: 159}
+      - {x: 229, y: 95}
+      - {x: 230, y: 89}
+      - {x: 271, y: 89}
+      - {x: 271, y: 158}
+      - {x: 261, y: 172}
+    - - {x: 21, y: 166}
+      - {x: 14, y: 156}
+      - {x: 14, y: 125}
+      - {x: 42, y: 91}
+      - {x: 69, y: 91}
+      - {x: 69, y: 134}
+      - {x: 68, y: 146}
+      - {x: 42, y: 163}
+      - {x: 32, y: 166}
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 4fbaeff3907b7437682935f5f464940f
+timeCreated: 1466377773
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - crtShader: {fileID: 4800000, guid: 2c632c65f388d4a6c91b3badc1968764, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
